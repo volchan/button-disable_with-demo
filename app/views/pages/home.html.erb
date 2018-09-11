@@ -59,7 +59,7 @@
       <h4>Formulaire ajax</h4>
       <%= simple_form_for :ajax_form, url: ajax_form_path, remote: true do |f| %>
         <%= f.input :super_input %>
-        <!-- html_safe obligatoire si il y as du html dans le disable_with d'un simple_form -->
+        <!-- utilisation de f.button au lieu de f.submit si il y as du html dans le disable_with d'un simple_form -->
         <%= f.button :button, 'Envoyer', class: 'btn btn-primary', data: { disable_with: '<i class="fas fa-circle-notch fa-spin fa-lg"></i> Envoi en cours...' } %>
         <span id="ajax-form"></span>
       <% end %>
