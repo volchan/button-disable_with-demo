@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <h1>Doc disable_with</h1>
+
+      <p>L'attribut "disable_with" désactive le bouton lors d'un clique sur celui-ci et affiche le html contenu dans son paramètre</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4>Bouton normal</h4>
+      <%= link_to "Cliquez moi !!!", root_path, class: 'btn btn-primary', data: { disable_with: "Merci !!!" }  %>
+    </div>
+  </div>
+
+  &nbsp;
+
+  <div class="row">
+    <div class="col">
+      <h4>Bouton avec call ajax</h4>
+      <%= link_to "Cliquez moi !!!", ajax_btn_path, class: 'btn btn-primary', remote: true, data: { disable_with: "En cours..." }  %>
+      &nbsp;
+      <span id="ajax-btn"></span>
+    </div>
+  </div>
+
+  &nbsp;
+
+  <div class="row">
+    <div class="col">
+      <h4>Bouton avec call ajax et spinner font_awesome</h4>
+      <%= link_to "Cliquez moi !!!", ajax_btn_fa_path, class: 'btn btn-primary', remote: true, data: { disable_with: "<i class='fas fa-circle-notch fa-spin fa-lg'></i> En cours..." }  %>
+      &nbsp;
+      <span id="ajax-btn-fa"></span>
+    </div>
+  </div>
+
+  &nbsp;
+
+  <div class="row">
+    <div class="col">
+      <h4>Formulaire normal</h4>
+      <%= simple_form_for :http_form, url: http_form_path do |f| %>
+        <%= f.input :super_input %>
+        <%= f.submit 'Envoyer', class: 'btn btn-primary', data: { disable_with: "Envoi en cours..." } %>
+      <% end %>
+    </div>
+  </div>
+
+  &nbsp;
+
+  <div class="row">
+    <div class="col">
+      <h4>Formulaire ajax</h4>
+      <%= simple_form_for :ajax_form, url: ajax_form_path, remote: true do |f| %>
+        <%= f.input :super_input %>
+        <!-- html_safe obligatoire si il y as du html dans le disable_with d'un simple_form -->
+        <%= f.button :button, 'Envoyer', class: 'btn btn-primary', data: { disable_with: '<i class="fas fa-circle-notch fa-spin fa-lg"></i> Envoi en cours...' } %>
+        <span id="ajax-form"></span>
+      <% end %>
+    </div>
+  </div>
+</div>
